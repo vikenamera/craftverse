@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CraftVerse</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="indexStyle.css">
+</head>
+
+<style>
+        body {
+        font-family:'Lucida Sans', Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        }
+    
+        .hero {
+            position: relative;
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            color: white;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); 
+            z-index: 0; 
+        }
+
+
+
+        .hero-content {
+            z-index: 1;
+            position: relative;
+            color: white;
+        }
+
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 15px;
+            padding: 30px;
+        }
+
+        .destination-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        .destination-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .destination-card:hover {
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+
+        .destination-card .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #08146d74;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .destination-card:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay a {
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        .about-text,
+        .contact-form {
+            margin-top: 30px;
+        }
+
+        .footer {
+            background-color: #0b1038;
+            color: #bfbfdb;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        
+
+        .destination-grid {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .section-title{
+            color: #173c78;
+            font-weight: bolder;
+            text-shadow: #0b1038;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 60vh;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .destination-grid {
+                padding: 15px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .footer p {
+                font-size: 0.9rem;
+            }
+            
+            .navbar-nav {
+                text-align: center;
+            }
+
+            nav.navbar .navbar-brand,
+            nav.navbar .nav-link {
+                font-size: 0.9rem;
+            }
+
+        }
+    </style>
+
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar bg-body-tertiary">
+      <div class="container d-flex justify-content-center">
+        <a class="navbar-brand" href="index.html">
+          <img src="logoo2.png" alt="CraftVerseLogo" class="img-fluid" width="350" height="150">
+        </a>
+      </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav justify-content-center w-100">
+            <li class="nav-item"><a class="nav-link" href="#">KREU</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">RRETH NESH</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">CraftStudio</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Workshops</a></li>
+                <li><a class="dropdown-item" href="#">Digital Classes</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">CraftMarket</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Handmade</a></li>
+                <li><a class="dropdown-item" href="#">Digital</a></li>
+                <li><a class="dropdown-item" href="#">Tools</a></li>
+                <li><a class="dropdown-item" href="#">Gift Boxes</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">CraftCommunity</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Kontakt</a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><button class="btn-filled">SIGN IN</button></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section with Video Background -->
+  <section class="hero" id="home">
+    <video autoplay muted loop playsinline class="hero-video">
+      <source src="vid1.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content">
+      <h1>Welcome to CraftVerse</h1>
+      <p class="subtitle">where <em>creativity</em> meets <em>convenience</em></p>
+      <p class="description">
+        Explore craft subscriptions, curated workshops, digital classes,<br>
+        high-quality tools & materials, and more.
+      </p>
+      <div class="hero-buttons">
+        <a href="#" class="btn-primary">Start a Subscription</a>
+        <a href="#" class="btn-secondary">Shop the Marketplace</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Trending Section -->
+<section class="trending-section">
+  <div class="trending-content">
+    <div class="trending-text">
+      <h2>What's<br>Trending?</h2>
+      <p>Nga punime artizanale me ngjyra të ngrohta deri te dizajnet digjitale që frymëzojnë, 
+        trendet tona reflektojnë shpirtin krijues të komunitetit. Shfletoni produktet më të pëlqyera, 
+        projektet që po marrin vëmendje dhe sfidat më kreative në CraftStudio, CraftMarket dhe CraftCommunity.</p>
+    </div>
+    <div class="trending-image">
+      <img src="trending.jpg" alt="Trending item" />
+    </div>
+  </div>
+</section>
+
+  <section id="explore">
+    <h2 class="section-title">Explore</h2>
+    <div class="destination-grid">
+      <div class="destination-card">
+        <img src="tutorial.jpg" alt="studio">
+        <div class="overlay">
+          <a href="#">CraftStudio</a>
+        </div>
+      </div>
+      <div class="destination-card">
+        <img src="market.jpg" alt="market">
+        <div class="overlay">
+          <a href="#">CraftMarket</a>
+        </div>
+      </div>
+      <div class="destination-card">
+        <img src="blog1.jpg" alt="blog">
+        <div class="overlay">
+          <a href="#">CraftCommunity</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Our Products Section -->
+<section class="products-section">
+  <h2>Our Products</h2>
+  <p>Society6 is for art and decor lovers. We sell high quality print-on-demand products designed by artists.</p>
+
+  <div class="scrolling-gallery">
+    <div class="image-track">
+      <!-- Duplicate image sets for seamless scrolling -->
+      <img src="candles.jpg" alt="Product" />
+      <img src="cupcake.jpg" alt="Product" />
+      <img src="pjata.jpg" alt="Product" />
+      <img src="qendisje.jpg" alt="Product" />
+      <img src="sedi.jpg" alt="Product" />
+      <img src="skulptur.jpg" alt="Product" />
+      <img src="cant.jpg" alt="Product" />
+      <img src="qeramik.jpg" alt="Product" />
+      <img src="candles.jpg" alt="Product" />
+      <img src="cupcake.jpg" alt="Product" />
+      <img src="pjata.jpg" alt="Product" />
+      <img src="qendisje.jpg" alt="Product" />
+      <img src="sedi.jpg" alt="Product" />
+      <img src="skulptur.jpg" alt="Product" />
+      <img src="cant.jpg" alt="Product" />
+      <img src="qeramik.jpg" alt="Product" />
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Designer's Dream Section -->
+  <section class="section reverse">
+    <div class="text-content">
+      <h1>Designer’s<br>Dream</h1>
+      <p class="dream">CraftVerse është vendi ku arti tradicional takohet me teknologjinë moderne. 
+        Një platformë e ndërtuar për të mbështetur krijuesit në çdo hap – nga ideja e parë, te mësimi dhe shitja. 
+        Këtu, çdo artist ka hapësirën për të shprehur talentin, për të ndarë pasionin dhe për ta kthyer kreativitetin në mënyrë jetese.</p>
+    </div>
+  <div class="circle-text">
+  <svg viewBox="0 0 200 200" width="200" height="200">
+    <defs>
+      <path id="circlePath" d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
+    </defs>
+    <g class="rotating-text">
+      <text font-size="10" fill="#007A82" font-family="Roboto">
+        <textPath href="#circlePath" startOffset="0%">
+          Designs • High Quality • Emerging Artists • Exclusive Designs • 
+        </textPath>
+      </text>
+    </g>
+  </svg>
+  <img src="dream.jpg" alt="Designer Room" />
+</div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-image">
+        <img src="slogan3.png" alt="Logo" width="450" height="150">
+      </div>
+      <div class="footer-grid">
+        <div>
+          <h4>Solution</h4>
+          <ul>
+            <li>Marketing</li>
+            <li>Analytics</li>
+            <li>Commerce</li>
+            <li>Insights</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <ul>
+            <li>Pricing</li>
+            <li>Guides</li>
+            <li>Docs</li>
+            <li>Status</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li>About</li>
+            <li>Blog</li>
+            <li>Jobs</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>+91 98765 43210</p>
+          <p>info@example.com</p>
+          <p>City, Country</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Website</p>
+      <div>
+        <a href="#">Terms & Conditions</a>
+        <span class="mx-2">|</span>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
