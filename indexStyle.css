@@ -128,6 +128,7 @@ header .navbar {
   footer {
     background-color: #1A1C29;
     color: white;
+    border-top: 4px solid #007A82;
     font-size: 0.875rem;
     padding: 2.5rem 1rem;
   }
@@ -199,6 +200,7 @@ header .navbar {
       position: relative;
       height: 90vh;
       display: flex;
+      border-top: 4px solid #007A82;
       justify-content: flex-start;
       align-items: center;
       text-align: center;
@@ -291,104 +293,56 @@ header .navbar {
       color: white !important;}
 
 
-    .section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 20px;
-    }
-
-    .section.reverse {
-      flex-direction: row-reverse;
-      background-color: #fff;
-    }
-
-    .text-content {
-      max-width: 400px;
-      margin: 20px;
-    }
-
-    h1 {
-      font-family: 'Lora', serif;
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
-
-    .subtext {
-      font-size: 14px;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    .button {
-      padding: 10px 20px;
-      background-color: #1A1C29;
-      color: white;
-      font-size: 12px;
-      border: none;
-      cursor: pointer;
-      text-transform: uppercase;
-    }
-
-    .image-content img {
-      max-width: 300px;
-      height: auto;
-      border-radius: 4px;
-    }
-
-   .circle-text {
-  position: relative;
-  display: inline-block;
+   /* ────────────────────────────── */
+/* Trending Section              */
+/* ────────────────────────────── */
+.trending-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  flex-wrap: wrap;
+  background-color: #F7F4F0;
 }
 
-.circle-text img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 160px;
-  transform: translate(-50%, -50%);
-  border-radius: 6px;
-  z-index: 1;
+.trending-content {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  max-width: 1000px;
 }
 
-svg {
-  position: relative;
-  z-index: 0;
+.trending-text {
+  max-width: 400px;
+  font-size: 1rem;
+  color: #1A1C29;
 }
 
-.rotating-text {
-  animation: spin 20s linear infinite;
-  transform-origin: center;
+.trending-text h2 {
+  font-family: 'Lora', serif;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: #007A82;
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.trending-image img {
+  max-width: 200px; /* wider image */
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
 }
 
 
-    .dream {
-      text-align: center;
-      font-size: 14px;
-      max-width: 300px;
-      margin: 20px auto 0;
-    }
 
-    .name {
-      margin-top: 5px;
-      font-size: 12px;
-      color: #BD4C65;
-    }
-
-
-    /* Products Section */
+/* ────────────────────────────── */
+/* Products Section               */
+/* ────────────────────────────── */
 .products-section {
   text-align: center;
-  padding: 3rem 1rem;
+  padding: 4rem 2rem;
   background-color: #F7F4F0;
 }
 
@@ -396,11 +350,13 @@ svg {
   font-family: 'Lora', serif;
   font-size: 3rem;
   margin-bottom: 0.5rem;
+  color: #1A1C29;
 }
 
 .products-section p {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
+  color: #1A1C29;
   margin-bottom: 2rem;
 }
 
@@ -420,12 +376,13 @@ svg {
 
 .image-track img {
   width: 200px;
-  height: auto;
+  height: 200px;
+  object-fit: cover;
   margin: 0 10px;
   border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Scrolling Animation */
 @keyframes scroll-horizontal {
   from {
     transform: translateX(0);
@@ -435,41 +392,74 @@ svg {
   }
 }
 
-/* Trending Section */
-.trending-section {
+/* ────────────────────────────── */
+/* Designer’s Dream Section       */
+/* ────────────────────────────── */
+.section.reverse {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   padding: 4rem 2rem;
-  flex-wrap: wrap;
-}
-
-.trending-content {
-  display: flex;
   gap: 2rem;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  max-width: 1000px;
 }
 
-.trending-text {
+.text-content {
   max-width: 400px;
-  font-size: 0.95rem;
+  text-align: left;
 }
 
-.trending-text h2 {
+.text-content h1 {
   font-family: 'Lora', serif;
   font-size: 2.5rem;
-  line-height: 1.2;
+  color: #007A82;
   margin-bottom: 1rem;
 }
 
-.trending-text .hashtag {
-  margin-top: 1rem;
-  font-weight: bold;
+.dream {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #1A1C29;
 }
 
-.trending-image img {
-  max-width: 300px;
-  border-radius: 12px;
+/* Rotating Circle + Image (Smaller) */
+.circle-text-wrapper {
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+
+.circle-text-wrapper svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.center-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  border-radius: 0.5rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.rotating-text {
+  animation: spin 25s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
