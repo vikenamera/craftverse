@@ -1,71 +1,3 @@
-/* .about-section {
-    background-color: #F7F4F0;
-    color: #1A1C29;
-    padding: 60px 20px;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  .about-section .container {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-  
-  .about-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #007A82;
-    text-align: center;
-  }
-  
-  .about-section h3 {
-    font-size: 1.8rem;
-    margin-top: 40px;
-    margin-bottom: 15px;
-    color: #BD4C65;
-  }
-  
-  .about-section p {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-bottom: 20px;
-  }
-  
-  .about-section ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin-bottom: 30px;
-  }
-  
-  .about-section ul li {
-    font-size: 1.05rem;
-    margin-bottom: 10px;
-    color: #1A1C29;
-  }
-  
-  .about-section ul li strong {
-    color: #007A82;
-  }
-  
-  .join-button {
-    display: inline-block;
-    padding: 12px 25px;
-    background-color: #70C7A8;
-    color: #1A1C29;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-    margin-top: 20px;
-  }
-  
-  .join-button:hover {
-    background-color: #007A82;
-    color: #F7F4F0;
-  }
-
-   */
-
-  /* aboutStyle.css */
 
 /* aboutStyle.css */
 
@@ -399,4 +331,110 @@ h5 {
 .btn:hover {
   background-color: #BD4C65; /* Hover color */
   transform: translateY(-2px);
+}
+
+
+
+@media (max-width: 767.98px) {
+  .about-section .row.align-items-center {
+    flex-direction: column-reverse;
+  }
+
+  .about-section .crafting-img {
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  .mission-img {
+    max-width: 140px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    font-size: 0.8rem;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .nav-item {
+    margin: 0;
+  }
+
+  .join-button,
+  .btn,
+  .auth-buttons .btn-filled,
+  .auth-buttons .btn-outline {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 479.98px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 1rem 0;
+  }
+}
+
+/* Tablets (Portrait + Landscape) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .about-section {
+    padding: 3rem 1rem;
+  }
+
+  .about-section h2 {
+    font-size: 2.25rem;
+  }
+
+  .about-section h3 {
+    font-size: 1.6rem;
+  }
+
+  .about-images img {
+    width: 120px;
+  }
+
+  .value-img {
+    height: 250px;
+  }
+
+  .mission-img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .crafting-img {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
