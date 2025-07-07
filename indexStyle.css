@@ -125,73 +125,134 @@ header .navbar {
 
 
   /* Footer Styles */
-  footer {
-    background-color: #1A1C29;
-    color: white;
-    border-top: 4px solid #007A82;
-    font-size: 0.875rem;
-    padding: 2.5rem 1rem;
-  }
-  
-  .footer-top {
-    display: flex;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 2rem;
-    align-items: flex-start;
-  }
-
-  .footer-image {
-  flex: 0 0 auto;
-  width: 100%;
-  max-width: 450px;
-  margin-right: 3rem;
+footer {
+  background-color: #1A1C29;
+  color: #eaeaea;
+  padding: 40px 20px 20px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.95rem;
 }
 
-  
-  .footer-image img {
-  display: block;
-  width: 100%;
-  height: auto;
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
 }
 
-  
-  /* Adjust footer grid to take remaining space */
- .footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1.5rem;
-  flex: 1 1 0%;
-  min-width: 300px;
+.footer-about {
+  flex: 1 1 250px;
+}
+
+.footer-about img {
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+
+.footer-about p {
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.5;
+  max-width: 280px;
+}
+
+.footer-grid {
+  display: flex;
+  flex: 2;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.footer-grid h4 {
+  font-family: 'Lora', serif;
+  font-weight: bold;
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+  color: #BD4C65;
+}
+
+.footer-grid ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-grid li {
+  margin-bottom: 8px;
+}
+
+.footer-grid a {
+  color: #d4d4d4;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-grid a:hover {
+  color: #ffffff;
 }
 
 .footer-bottom {
-  text-align: center;
-  margin-top: 2rem;
-  border-top: 1px solid #007A82;
-  padding-top: 1rem;
-  font-size: 0.875rem;
+  border-top: 1px solid #333;
+  margin-top: 30px;
+  padding-top: 15px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.5rem;
-}
-
-.footer-bottom p {
-  margin: 0;
-  font-weight: 600;
-  color: #70C7A8;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin-inline: auto;
+  font-size: 0.85rem;
+  color: #aaa;
 }
 
 .footer-bottom a {
-  text-decoration: underline;
-  color: #DEF2ED;
+  color: #aaa;
+  margin: 0 8px;
+  text-decoration: none;
 }
 
-  .footer-bottom a:hover {
-  color: #70C7A8;
+.footer-bottom a:hover {
+  color: #fff;
 }
 
+.footer-bottom span {
+  color: #555;
+}
+
+.footer-bottom p{
+  color:#BD4C65;
+  font-family: 'Roboto', serif;
+}
+
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .footer-about p {
+    max-width: 100%;
+  }
+} 
 .mx-2 {
   margin: 0 0.5rem;
 }
@@ -200,7 +261,6 @@ header .navbar {
       position: relative;
       height: 90vh;
       display: flex;
-      border-top: 4px solid #007A82;
       justify-content: flex-start;
       align-items: center;
       text-align: center;
@@ -293,56 +353,104 @@ header .navbar {
       color: white !important;}
 
 
-   /* ────────────────────────────── */
-/* Trending Section              */
-/* ────────────────────────────── */
-.trending-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4rem 2rem;
-  flex-wrap: wrap;
-  background-color: #F7F4F0;
+    .section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+    }
+
+    .section.reverse {
+      flex-direction: row-reverse;
+      background-color: #fff;
+    }
+
+    .text-content {
+      max-width: 400px;
+      margin: 20px;
+    }
+
+    h1 {
+      font-family: 'Lora', serif;
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .subtext {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .button {
+      padding: 10px 20px;
+      background-color: #1A1C29;
+      color: white;
+      font-size: 12px;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    .image-content img {
+      max-width: 300px;
+      height: auto;
+      border-radius: 4px;
+    }
+
+   .circle-text {
+  position: relative;
+  display: inline-block;
 }
 
-.trending-content {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  max-width: 1000px;
+.circle-text img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 160px;
+  transform: translate(-50%, -50%);
+  border-radius: 6px;
+  z-index: 1;
 }
 
-.trending-text {
-  max-width: 400px;
-  font-size: 1rem;
-  color: #1A1C29;
+svg {
+  position: relative;
+  z-index: 0;
 }
 
-.trending-text h2 {
-  font-family: 'Lora', serif;
-  font-size: 2.5rem;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-  color: #007A82;
+.rotating-text {
+  animation: spin 20s linear infinite;
+  transform-origin: center;
 }
 
-.trending-image img {
-  max-width: 200px; /* wider image */
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  object-fit: cover;
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 
+    .dream {
+      text-align: center;
+      font-size: 14px;
+      max-width: 300px;
+      margin: 20px auto 0;
+    }
 
-/* ────────────────────────────── */
-/* Products Section               */
-/* ────────────────────────────── */
+    .name {
+      margin-top: 5px;
+      font-size: 12px;
+      color: #BD4C65;
+    }
+
+
+    /* Products Section */
 .products-section {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 3rem 1rem;
   background-color: #F7F4F0;
 }
 
@@ -350,13 +458,11 @@ header .navbar {
   font-family: 'Lora', serif;
   font-size: 3rem;
   margin-bottom: 0.5rem;
-  color: #1A1C29;
 }
 
 .products-section p {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
-  color: #1A1C29;
   margin-bottom: 2rem;
 }
 
@@ -376,13 +482,12 @@ header .navbar {
 
 .image-track img {
   width: 200px;
-  height: 200px;
-  object-fit: cover;
+  height: auto;
   margin: 0 10px;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Scrolling Animation */
 @keyframes scroll-horizontal {
   from {
     transform: translateX(0);
@@ -392,74 +497,41 @@ header .navbar {
   }
 }
 
-/* ────────────────────────────── */
-/* Designer’s Dream Section       */
-/* ────────────────────────────── */
-.section.reverse {
+/* Trending Section */
+.trending-section {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   padding: 4rem 2rem;
+  flex-wrap: wrap;
+}
+
+.trending-content {
+  display: flex;
   gap: 2rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  max-width: 1000px;
 }
 
-.text-content {
+.trending-text {
   max-width: 400px;
-  text-align: left;
+  font-size: 0.95rem;
 }
 
-.text-content h1 {
+.trending-text h2 {
   font-family: 'Lora', serif;
   font-size: 2.5rem;
-  color: #007A82;
+  line-height: 1.2;
   margin-bottom: 1rem;
 }
 
-.dream {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #1A1C29;
+.trending-text .hashtag {
+  margin-top: 1rem;
+  font-weight: bold;
 }
 
-/* Rotating Circle + Image (Smaller) */
-.circle-text-wrapper {
-  position: relative;
-  width: 400px;
-  height: 400px;
-}
-
-.circle-text-wrapper svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
-
-.center-image {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 240px;
-  height: 240px;
-  object-fit: cover;
-  transform: translate(-50%, -50%);
-  border-radius: 0.5rem;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-  z-index: 2;
-}
-
-.rotating-text {
-  animation: spin 25s linear infinite;
-  transform-origin: center;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.trending-image img {
+  max-width: 300px;
+  border-radius: 12px;
 }
