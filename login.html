@@ -192,7 +192,13 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
     location.reload();
   }, 4000);
 });
-
+document.getElementById('loginForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  showToast('Hyrja u krye me sukses!', 'success');
+  setTimeout(() => {
+    window.location.href = 'index.html';
+  }, 4000);
+});
 </script>
 
 </html>
