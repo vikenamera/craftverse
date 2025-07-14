@@ -10,175 +10,6 @@
   <link rel="stylesheet" href="indexStyle.css">
 </head>
 
-<style>
-        body {
-        font-family:'Lucida Sans', Verdana, sans-serif;
-        margin: 0;
-        padding: 0;
-        }
-    
-        .hero {
-            position: relative;
-            height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-            color: white;
-        }
-
-        .hero-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4); 
-            z-index: 0; 
-        }
-
-
-
-        .hero-content {
-            z-index: 1;
-            position: relative;
-            color: white;
-        }
-
-
-        .destination-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-            gap: 15px;
-            padding: 30px;
-        }
-
-        .destination-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-
-        .destination-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .destination-card:hover {
-            transform: scale(1.05);
-            transition: all 0.3s ease;
-        }
-
-        .destination-card .overlay {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: #bd4c64ac;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .destination-card:hover .overlay {
-            opacity: 1;
-        }
-
-        .overlay a {
-            font-size: 1.5rem;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-top: 50px;
-            margin-bottom: 30px;
-        }
-
-        .about-text,
-        .contact-form {
-            margin-top: 30px;
-        }
-
-        .footer {
-            background-color: #0b1038;
-            color: #bfbfdb;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .footer a:hover {
-            color: white;
-            text-decoration: underline;
-        }
-
-        
-
-        .destination-grid {
-            text-align: center;
-            padding: 10px;
-        }
-
-        .section-title{
-            color: #173c78;
-            font-weight: bolder;
-            text-shadow: #0b1038;
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                height: 60vh;
-            }
-
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-
-            .destination-grid {
-                padding: 15px;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
-
-            .footer p {
-                font-size: 0.9rem;
-            }
-            
-            .navbar-nav {
-                text-align: center;
-            }
-
-            nav.navbar .navbar-brand,
-            nav.navbar .nav-link {
-                font-size: 0.9rem;
-            }
-
-        }
-    </style>
-
 <body>
   <!-- Header -->
   <header>
@@ -201,52 +32,50 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">CraftStudio</a>
               <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Punime Artizanale</a></li>
-                            <li><a class="dropdown-item" href="#">Ilustrime Digjitale</a></li>
-                            <li><a class="dropdown-item" href="#">Qepje & Endje</a></li>
-                            <li><a class="dropdown-item" href="#">Punime të Ricikluara</a></li>
-                            <li><a class="dropdown-item" href="#">Kurse me Mentor</a></li>
+                <li><a class="dropdown-item" href="#">Workshops</a></li>
+                <li><a class="dropdown-item" href="#">Digital Classes</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">CraftMarket</a>
-           <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="handmade.html">Handmade</a></li>
-                            <li><a class="dropdown-item" href="#">Produkte Digjitale</a></li>
-                            <li><a class="dropdown-item" href="#">Mjete & Aksesore</a></li>
-                            <li><a class="dropdown-item" href="#">Pako Dhuratë</a></li>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Handmade</a></li>
+                <li><a class="dropdown-item" href="#">Digital</a></li>
+                <li><a class="dropdown-item" href="#">Tools</a></li>
+                <li><a class="dropdown-item" href="#">Gift Boxes</a></li>
               </ul>
             </li>
-            <li class="nav-item"><a class="nav-link" href="#">CraftCommunity </a></li>
-            <li class="nav-item"><a class="nav-link" href="contact.html">Kontakt</a></li>
-            <li class="nav-item"><a class="nav-link" href="signup.html"><button class="btn-filled">SignUP</button></a></li>
+            <li class="nav-item"><a class="nav-link" href="blog.html">CraftCommunity</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Kontakt</a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><button class="btn-filled">SIGN IN</button></a></li>
           </ul>
         </div>
       </div>
     </nav>
   </header>
 
-  <!-- Hero Section with Video Background -->
-  <section class="hero" id="home">
-    <video autoplay muted loop playsinline class="hero-video">
-      <source src="vid1.mp4" type="video/mp4">
-    </video>
-    <div class="hero-content">
-      <h1>Welcome to CraftVerse</h1>
-      <p class="subtitle">where <em>creativity</em> meets <em>convenience</em></p>
-      <p class="description">
-        Explore craft subscriptions, curated workshops, digital classes,<br>
-        high-quality tools & materials, and more.
-      </p>
-      <div class="hero-buttons">
-        <a href="#" class="btn-primary">Start a Subscription</a>
-        <a href="#" class="btn-secondary">Shop the Marketplace</a>
-      </div>
+  <!-- Seksioni Kryesor me Video në Sfond -->
+<section class="hero" id="home">
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="vid1.mp4" type="video/mp4">
+  </video>
+  <div class="hero-content">
+    <h1>Mirë se erdhe në CraftVerse</h1>
+    <p class="subtitle">ku <em>kreativiteti</em> takohet me <em>lehtësinë</em></p>
+    <p class="description">
+      Eksploro abonimet artizanale, punëtoritë e kuruara, kurset digjitale,<br>
+      mjetet dhe materialet me cilësi të lartë, dhe shumë më tepër.
+    </p>
+    <div class="hero-buttons">
+      <a href="#" class="btn-primary">Nis një Abonim</a>
+      <a href="#" class="btn-secondary">Bli në Treg</a>
     </div>
-  </section>
+  </div>
+</section>
+
+
 
   <!-- What's Trending Section -->
-<!-- Trending Section -->
 <section class="trending-section">
   <div class="trending-content">
     <div class="trending-text">
@@ -284,7 +113,7 @@
     <div class="destination-card">
       <img src="blog1.jpg" alt="CraftCommunity">
       <div class="overlay">
-        <a href="#">CraftCommunity</a>
+        <a href="blog.html">CraftCommunity</a>
       </div>
     </div>
   </div>
@@ -294,7 +123,7 @@
 <!-- Products Section -->
 <section class="products-section">
   <h2>Our Products</h2>
-  <p>........................</p>
+  <p>.............</p>
 
   <div class="scrolling-gallery">
     <div class="image-track">
@@ -349,63 +178,130 @@
   </div>
 </section>
 
+<section class="testimonial-section">
+  <h2>Testimonials</h2>
+<br>
+  <div class="testimonial-container">
+    <button class="arrow left" onclick="prevTestimonial()">&#8592;</button>
+
+    <div class="testimonial-content" id="testimonial-content">
+      <!-- JS will populate this -->
+    </div>
+
+    <button class="arrow right" onclick="nextTestimonial()">&#8594;</button>
+  </div>
+</section>
+
+
+
+
 
   <!-- Footer -->
-<footer>
-  <div class="footer-top">
-    <!-- Logo + Slogan -->
-    <div class="footer-about">
-      <img src="slogan1.png" alt="CraftVerse Logo" width="300px">
-    </div>
-
-    <!-- Lidhje të shpejta -->
-    <div class="footer-grid">
-      <div>
-        <h4>CraftVerse</h4>
-        <ul>
-          <li><a href="index.html">Kreu</a></li>
-          <li><a href="#craftstudio">CarftStudio</a></li>
-          <li><a href="#craftmarket">CraftMarket</a></li>
-          <li><a href="#craftcommunity">CraftCommunity</a></li>
-        </ul>
+  <footer>
+    <div class="footer-top">
+      <div class="footer-image">
+        <img src="slogan3.png" alt="Logo" width="450" height="150">
       </div>
-
-      <div>
-        <h4>Mbështetje</h4>
-        <ul>
-          <li><a href="#">Kontakt</a></li>
-          <li><a href="#">Ndihmë</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4>Kompania</h4>
-        <ul>
-          <li><a href="#">Rreth Nesh</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Na gjej lehtësisht</h4>
-        <ul>
-          <li><i class="fas fa-phone"></i> +355 60 000 0000</li>
-          <li><i class="fas fa-envelope"></i> info@craftverse.com</li>
-          <li><i class="fas fa-map-marker-alt"></i> Tiranë, Shqipëri</li>
-        </ul>
+      <div class="footer-grid">
+        <div>
+          <h4>Solution</h4>
+          <ul>
+            <li>Marketing</li>
+            <li>Analytics</li>
+            <li>Commerce</li>
+            <li>Insights</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <ul>
+            <li>Pricing</li>
+            <li>Guides</li>
+            <li>Docs</li>
+            <li>Status</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li>About</li>
+            <li>Blog</li>
+            <li>Jobs</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>+91 98765 43210</p>
+          <p>info@example.com</p>
+          <p>City, Country</p>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="footer-bottom">
-    <p>&copy; 2025 CraftVerse</p>
-    <div>
-      <a href="#">Termat</a>
-      <span>|</span>
-      <a href="#">Privatësia</a>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Website</p>
+      <div>
+        <a href="#">Terms & Conditions</a>
+        <span class="mx-2">|</span>
+        <a href="#">Privacy Policy</a>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
+  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+<script>
+  const testimonials = [
+    {
+      text: "CraftVerse më dha mundësinë të shes punimet e mia të dorës dhe të lidhem me njerëz që i vlerësojnë artizanatin. Komuniteti është i ngrohtë dhe shumë mbështetës!",
+      stars: 4,
+      name: "Arta B.",
+      designation: "Artizane"
+    },
+    {
+      text: "E adhuroj seksionin e produkteve digjitale! Si një dizajner grafik, më në fund gjeta një platformë që e vlerëson punën time dhe ma lehtëson shitjen",
+      stars: 5,
+      name: "Redi K.",
+      designation: "Dizajner Freelancer"
+    },
+    {
+      text: "Për çdo dhuratë që dua të bëj, shkoj te CraftVerse. Paketimet janë të kuruara me shumë kujdes dhe çdo produkt ka shpirt.",
+      stars: 3,
+      name: "Elira M.",
+      designation: "Kliente e rregullt"
+    }
+  ];
+
+  let current = 0;
+
+  function renderTestimonial() {
+    const t = testimonials[current];
+    const stars = '★'.repeat(t.stars) + '☆'.repeat(5 - t.stars);
+
+    document.getElementById('testimonial-content').innerHTML = `
+      <div class="stars">${stars}</div>
+      <p class="testimonial-text">${t.text}</p>
+      <p class="author-name">${t.name}</p>
+      <p class="designation">${t.designation}</p>
+    `;
+  }
+
+  function prevTestimonial() {
+    current = (current - 1 + testimonials.length) % testimonials.length;
+    renderTestimonial();
+  }
+
+  function nextTestimonial() {
+    current = (current + 1) % testimonials.length;
+    renderTestimonial();
+  }
+
+  // Init
+  renderTestimonial();
+</script>
+
+
+
 </body>
 
 </html> 
