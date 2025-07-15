@@ -1,56 +1,96 @@
+// DOM Elements
 const filters = document.querySelectorAll('.filter');
 const cards = document.querySelectorAll('.product-card');
-const priceValue = document.getElementById('price-value');
+const priceDisplay = document.getElementById('price-display');
+const minPriceInput = document.getElementById('min-price');
+const maxPriceInput = document.getElementById('max-price');
+const cartCountEl = document.getElementById('cart-count');
 
-filters.forEach(filter => {
-  filter.addEventListener('input', applyFilters);
+// Initialize filters
+[minPriceInput, maxPriceInput, ...filters].forEach(el => {
+  if (el) el.addEventListener('input', applyFilters);
 });
 
+// Apply filters
 function applyFilters() {
-  const selectedCategories = Array.from(document.querySelectorAll('input[data-filter="category"]:checked')).map(cb => cb.value);
-  const selectedColor = document.querySelector('select[data-filter="color"]').value;
-  const maxPrice = document.getElementById('price-range').value;
-  priceValue.textContent = `Up to $${maxPrice}`;
+  const selectedCategories = Array.from(document.querySelectorAll('input[data-filter="category"]:checked'))
+    .map(cb => cb.value);
+
+  let minPrice = parseInt(minPriceInput.value);
+  let maxPrice = parseInt(maxPriceInput.value);
+
+  if (minPrice > maxPrice) {
+    [minPrice, maxPrice] = [maxPrice, minPrice];
+  }
+
+  priceDisplay.textContent = `${minPrice} - ${maxPrice}+ Lekë`;
 
   cards.forEach(card => {
     const category = card.dataset.category;
-    const color = card.dataset.color;
-    const price = parseFloat(card.dataset.price);
+    const priceText = card.querySelector('.product-price').textContent;
+    const price = parseInt(priceText.replace(/\D/g, '')) || 0;
 
     const matchCategory = selectedCategories.length === 0 || selectedCategories.includes(category);
-    const matchColor = !selectedColor || selectedColor === color;
-    const matchPrice = price <= maxPrice;
+    const matchPrice = price >= minPrice && price <= maxPrice;
 
-    card.style.display = (matchCategory && matchColor && matchPrice) ? 'block' : 'none';
+    card.style.display = (matchCategory && matchPrice) ? 'block' : 'none';
   });
 }
 
-// function toggleFilters() {
-//   document.getElementById('filters').classList.toggle('collapsed');
-// }
-
-// function addToCart(title, price) {
-//   const cart = JSON.parse(localStorage.getItem('cart')) || [];
-//   cart.push({ title, price });
-//   localStorage.setItem('cart', JSON.stringify(cart));
-//   window.location.href = 'cart.html';
-// }
-
+// Add to cart
 function addToCartFromCard(button) {
-  const productMeta = button.closest('.product-meta');
-  const title = productMeta.querySelector('.product-title')?.innerText.trim();
-  const priceText = productMeta.querySelector('.product-price')?.innerText.trim();
-  const price = parseFloat(priceText.replace('$', ''));
-
-  // Get image by going up to .product-card and finding .product-image
   const productCard = button.closest('.product-card');
-  const image = productCard.querySelector('.product-image')?.src || '';
+  const title = productCard.querySelector('.product-title').textContent.trim();
+  const priceText = productCard.querySelector('.product-price').textContent;
+  const price = parseInt(priceText.replace(/\D/g, '')) || 0;
+  const imageSrc = productCard.querySelector('img').getAttribute('src');
+  const quantityInput = productCard.querySelector('.product-quantity');
+  const quantity = quantityInput ? parseInt(quantityInput.value) || 1 : 1;
 
-  // Save to localStorage
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  cart.push({ title, price, imageSrc: image });
-  localStorage.setItem('cart', JSON.stringify(cart));
 
-  // Optional: redirect to cart page
-  window.location.href = 'cart.html';
+  const existingIndex = cart.findIndex(item =>
+    item.title === title && item.price === price && item.imageSrc === imageSrc
+  );
+
+  if (existingIndex !== -1) {
+    cart[existingIndex].quantity += quantity;
+  } else {
+    cart.push({ title, price, imageSrc, quantity });
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartCount();
+  showAlert('Produkti u shtua në shportë!');
 }
+
+// Update cart count
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+  if (cartCountEl) cartCountEl.textContent = totalQty;
+}
+
+// Alert message
+function showAlert(message) {
+  const alertBox = document.getElementById('custom-alert');
+  if (!alertBox) return;
+
+  alertBox.textContent = message;
+  alertBox.classList.remove('hidden');
+  alertBox.classList.add('show');
+
+  setTimeout(() => {
+    alertBox.classList.remove('show');
+    setTimeout(() => {
+      alertBox.classList.add('hidden');
+    }, 300);
+  }, 2500);
+}
+
+
+// Initial load
+document.addEventListener('DOMContentLoaded', () => {
+  updateCartCount();
+  applyFilters();
+});
