@@ -1123,13 +1123,12 @@ body {
         } */
 
 
-    .destination-grid {
+   .destination-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
-  padding: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 30px 5px; /* top-bottom 30px, left-right 5px */
+  width: 100%; /* use full width of parent */
   box-sizing: border-box;
 }
 
