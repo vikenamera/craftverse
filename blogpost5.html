@@ -48,9 +48,38 @@
       <a href="blogpost4.html">← Postimi i Mëparshëm</a>
       <a href="blogpost6.html">Postimi Tjetër →</a>
     </div>
+ <section class="comment-section">
+      <h3>💬 Komento mbi postimin</h3>
+      <form class="comment-form" onsubmit="addComment(event)">
+        <input type="text" id="commenterName" placeholder="Emri juaj" required />
+        <textarea id="commentText" rows="4" placeholder="Shkruani komentin tuaj këtu..." required></textarea>
+        <button type="submit">Dergo Komentin</button>
+      </form>
 
+      <div class="comment-list" id="commentList">
+      </div>
+    </section>
   </article>
 </main>
+  
+<script>
+  function addComment(e) {
+    e.preventDefault();
+    const name = document.getElementById('commenterName').value;
+    const comment = document.getElementById('commentText').value;
+
+    const commentItem = document.createElement('div');
+    commentItem.className = 'comment-item';
+    commentItem.innerHTML = `<h4>${name}</h4><p>${comment}</p>`;
+
+    document.getElementById('commentList').appendChild(commentItem);
+
+    document.getElementById('commenterName').value = '';
+    document.getElementById('commentText').value = '';
+  }
+</script>
+
 
 </body>
 </html>
+
