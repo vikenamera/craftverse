@@ -1,0 +1,143 @@
+<!-- quiz4.html -->
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dhuro për Mikun që do Festa</title>
+  <style>
+            body {
+      font-family: 'Roboto', sans-serif;
+      background: #F7F4F0;
+      padding: 2rem;
+      color: #1A1C29;
+    }
+
+    .quiz-box {
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 550px;
+      margin: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      font-family: 'Lora', serif;
+      color: #007A82;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    button {
+      background: #BD4C65;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    .result {
+      margin-top: 1.5rem;
+      font-weight: bold;
+      color: #007A82;
+    }
+
+    .back-button {
+      display: inline-block;
+      background: transparent;
+      color: #BD4C65;
+      border: 2px solid #BD4C65;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      text-decoration: none;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    form p {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="quiz-box">
+
+  <a href="market.html" class="back-button">← Kthehu pas</a>
+
+  <h2>Miku yt është gjithmonë në festë?</h2>
+  <form id="quizForm4">
+
+    <p>1. Çfarë i pëlqen më shumë mikut tënd gjatë një feste?</p>
+    <label><input type="radio" name="q1" value="dekor" /> Dekorimi i ambientit</label><br />
+    <label><input type="radio" name="q1" value="muzike" /> Muzika dhe playlist-at</label><br />
+    <label><input type="radio" name="q1" value="ushqim" /> Gatimi dhe ushqimet kreative</label><br /><br />
+
+    <p>2. Çfarë dhurate do ta emociononte më shumë?</p>
+    <label><input type="radio" name="q2" value="dekor" /> Ndriçues ambienti ose girlanda me drita</label><br />
+    <label><input type="radio" name="q2" value="muzike" /> Altoparlant i vogël i personalizuar</label><br />
+    <label><input type="radio" name="q2" value="ushqim" /> Set gatimi artizanal ose receta unike</label><br /><br />
+
+    <p>3. Cila është detyra që merr gjithmonë në festat mes miqsh?</p>
+    <label><input type="radio" name="q3" value="muzike" /> Përgatit playlist dhe kujdeset për atmosferën</label><br />
+    <label><input type="radio" name="q3" value="dekor" /> Vendos dritat, qirinjtë dhe të gjitha zbukurimet</label><br />
+    <label><input type="radio" name="q3" value="ushqim" /> Gatuan ose sjell ëmbëlsira të bëra vetë</label><br /><br />
+
+    <p>4. Si është ambienti i dhomës së tij/saj?</p>
+    <label><input type="radio" name="q4" value="dekor" /> Plot ngjyra, drita dhe dekor handmade</label><br />
+    <label><input type="radio" name="q4" value="muzike" /> Ka pajisje muzikore dhe postera të koncerteve</label><br />
+    <label><input type="radio" name="q4" value="ushqim" /> Plot me aroma gatimi dhe libra recetash</label><br /><br />
+
+    <p>5. Çfarë ruan gjithmonë pas një feste?</p>
+    <label><input type="radio" name="q5" value="ushqim" /> Recetat më të suksesshme ose ëmbëlsira për më vonë</label><br />
+    <label><input type="radio" name="q5" value="dekor" /> Dekorimet për t’i përdorur në festën tjetër</label><br />
+    <label><input type="radio" name="q5" value="muzike" /> Playlist-in që u dëgjua gjithë natën</label><br />
+
+    <button type="submit">🎁 Zbulo Dhuratën</button>
+  </form>
+
+  <div class="result" id="result4"></div>
+</div>
+
+<script>
+  document.getElementById('quizForm4').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const questions = ['q1', 'q2', 'q3', 'q4', 'q5'];
+    const votes = { dekor: 0, muzike: 0, ushqim: 0 };
+    const result = document.getElementById('result4');
+
+    for (let q of questions) {
+      const answer = document.querySelector(`input[name="${q}"]:checked`);
+      if (!answer) {
+        result.textContent = 'Ju lutem plotësoni të gjitha pyetjet.';
+        return;
+      }
+      votes[answer.value]++;
+    }
+
+    let maxType = 'dekor';
+    let maxVotes = votes.dekor;
+
+    for (const type in votes) {
+      if (votes[type] > maxVotes) {
+        maxType = type;
+        maxVotes = votes[type];
+      }
+    }
+
+    const suggestions = {
+      dekor: '🎀 Dhuratë e Sugjeruar: Dekor handmade për festë, drita të varura ose qirinj të personalizuar nga CraftMarket.',
+      muzike: '🎵 Dhuratë e Sugjeruar: Mini-altoparlant i dizajnuar, mbajtëse celulari për party playlists ose kartë me muzikë surprizë.',
+      ushqim: '🍪 Dhuratë e Sugjeruar: Set për zbukurim ëmbëlsirash, receta artizanale ose tabaka për shërbim estetik.'
+    };
+
+    result.textContent = suggestions[maxType];
+  });
+</script>
+
+</body>
+</html>

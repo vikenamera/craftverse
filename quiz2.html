@@ -1,0 +1,122 @@
+<!-- quiz2.html -->
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <title>Çfarë Dhurate Përshtatet për Mikun tënd?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #F7F4F0;
+      padding: 2rem;
+      color: #1A1C29;
+    }
+
+    .quiz-box {
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 550px;
+      margin: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      font-family: 'Lora', serif;
+      color: #007A82;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    button {
+      background: #BD4C65;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    .result {
+      margin-top: 1.5rem;
+      font-weight: bold;
+      color: #007A82;
+    }
+
+    .back-button {
+      display: inline-block;
+      background: transparent;
+      color: #BD4C65;
+      border: 2px solid #BD4C65;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      text-decoration: none;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    form p {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="quiz-box">
+  <a href="market.html" class="back-button">← Kthehu pas</a>
+  <h2>Zbulo dhuratën ideale për mikun tënd!</h2>
+  <form id="quizForm2">
+    <p>1. Çfarë preferon miku yt për një fundjavë të lirë?</p>
+    <label><input type="radio" name="q1" value="relaks"> Një ditë spa ose qetësi në natyrë</label><br>
+    <label><input type="radio" name="q1" value="aktiv"> Një udhëtim spontan ose aktivitet sportiv</label><br><br>
+
+    <p>2. Kur feston ditëlindjen, ai/ajo preferon...</p>
+    <label><input type="radio" name="q2" value="relaks"> Një darkë intime me njerëzit më të afërt</label><br>
+    <label><input type="radio" name="q2" value="aktiv"> Një festë me shumë njerëz dhe argëtim</label><br><br>
+
+    <p>3. Cili nga këto i përshtatet më shumë?</p>
+    <label><input type="radio" name="q3" value="relaks"> Qetësi, libra, qirinj aromatik</label><br>
+    <label><input type="radio" name="q3" value="aktiv"> Adrenalinë, lojëra, pajisje teknologjike</label><br><br>
+
+    <p>4. Çfarë i pëlqen të mbajë afër?</p>
+    <label><input type="radio" name="q4" value="relaks"> Diçka sentimentale ose simbolike</label><br>
+    <label><input type="radio" name="q4" value="aktiv"> Diçka praktike ose që mund të përdoret</label><br><br>
+
+    <button type="submit">🎁 Zbulo Dhuratën</button>
+  </form>
+
+  <div class="result" id="result2"></div>
+</div>
+
+<script>
+  document.getElementById('quizForm2').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const values = [
+      document.querySelector('input[name="q1"]:checked'),
+      document.querySelector('input[name="q2"]:checked'),
+      document.querySelector('input[name="q3"]:checked'),
+      document.querySelector('input[name="q4"]:checked')
+    ];
+
+    const result = document.getElementById('result2');
+
+    if (values.some(v => !v)) {
+      result.textContent = 'Ju lutem plotësoni të gjitha pyetjet.';
+      return;
+    }
+
+    const countRelaks = values.filter(v => v.value === 'relaks').length;
+
+    if (countRelaks >= 3) {
+      result.textContent = '🕯️ Sugjerim: Një kuti relaksi me qirinj artizanalë, çaj bio dhe fletore personale nga CraftMarket.';
+    } else {
+      result.textContent = '🎧 Sugjerim: Një set aksesorësh për udhëtim ose pajisje të vogla digjitale kreative.';
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!-- quiz3.html -->
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <title>Zbulo Dhuratën për Mikun tënd</title>
+  <style>
+        body {
+      font-family: 'Roboto', sans-serif;
+      background: #F7F4F0;
+      padding: 2rem;
+      color: #1A1C29;
+    }
+
+    .quiz-box {
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 550px;
+      margin: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      font-family: 'Lora', serif;
+      color: #007A82;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    button {
+      background: #BD4C65;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    .result {
+      margin-top: 1.5rem;
+      font-weight: bold;
+      color: #007A82;
+    }
+
+    .back-button {
+      display: inline-block;
+      background: transparent;
+      color: #BD4C65;
+      border: 2px solid #BD4C65;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      text-decoration: none;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    form p {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="quiz-box">
+
+  <a href="market.html" class="back-button">← Kthehu pas</a>
+
+  <h2>Çfarë tipi është miku yt?</h2>
+  <form id="quizForm3">
+
+    <p>1. Çfarë poston më shpesh në rrjete sociale?</p>
+    <label><input type="radio" name="q1" value="artist" /> Punime arti ose piktura</label><br />
+    <label><input type="radio" name="q1" value="gamer" /> Screenshot nga lojërat</label><br />
+    <label><input type="radio" name="q1" value="traveler" /> Pamje nga udhëtimet</label><br /><br />
+
+    <p>2. Nëse do t’i dhuroje një ditë pushimi, ku do të shkonte?</p>
+    <label><input type="radio" name="q2" value="traveler" /> Në një qytet të ri për të eksploruar</label><br />
+    <label><input type="radio" name="q2" value="artist" /> Në një studio krijuese me ngjyra e materiale</label><br />
+    <label><input type="radio" name="q2" value="gamer" /> Në shtëpi me laptop dhe snacks</label><br /><br />
+
+    <p>3. Çfarë aktiviteti e bën më të lumtur?</p>
+    <label><input type="radio" name="q3" value="artist" /> Të punosh me duart dhe krijuar diçka të bukur</label><br />
+    <label><input type="radio" name="q3" value="gamer" /> Të sfidosh veten në një lojë konkurruese</label><br />
+    <label><input type="radio" name="q3" value="traveler" /> Të zbulojë vende të reja dhe kultura të ndryshme</label><br /><br />
+
+    <p>4. Cili është stili i preferuar i veshjes?</p>
+    <label><input type="radio" name="q4" value="artist" /> Bohemi me ngjyra dhe aksesorë unikalë</label><br />
+    <label><input type="radio" name="q4" value="gamer" /> Komod dhe sportiv, shpesh me bluza lojërash</label><br />
+    <label><input type="radio" name="q4" value="traveler" /> Praktik dhe i përshtatshëm për aventura</label><br /><br />
+
+    <p>5. Si e kalon kohën e lirë?</p>
+    <label><input type="radio" name="q5" value="traveler" /> Planifikon udhëtime dhe kërkon për destinacione</label><br />
+    <label><input type="radio" name="q5" value="artist" /> Vizaton, shkruan apo krijon muzikë</label><br />
+    <label><input type="radio" name="q5" value="gamer" /> Luaj lojëra online me shokët</label><br />
+
+    <button type="submit">🎁 Zbulo Dhuratën</button>
+  </form>
+
+  <div class="result" id="result3"></div>
+</div>
+
+<script>
+  document.getElementById('quizForm3').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const questions = ['q1', 'q2', 'q3', 'q4', 'q5'];
+    const votes = { artist: 0, gamer: 0, traveler: 0 };
+    const result = document.getElementById('result3');
+
+    for (let q of questions) {
+      const answer = document.querySelector(`input[name="${q}"]:checked`);
+      if (!answer) {
+        result.textContent = 'Të lutem përgjigju të gjitha pyetjeve.';
+        return;
+      }
+      votes[answer.value]++;
+    }
+
+    // Gjej tipin me më shumë pikë
+    let maxType = 'artist';
+    let maxVotes = votes.artist;
+
+    for (const type in votes) {
+      if (votes[type] > maxVotes) {
+        maxType = type;
+        maxVotes = votes[type];
+      }
+    }
+
+    const suggestions = {
+      artist: '🎨 Rekomandim: Set me brushë profesionale, kalendar artistik, ose kit për pikturë nga CraftMarket.',
+      gamer: '🎮 Rekomandim: Mousepad artizanal, gotë për gaming sessions, ose kufje me stil.',
+      traveler: '🧳 Rekomandim: Ditar udhëtimi i personalizuar, pouch për udhëtime, ose çantë shpine praktike.'
+    };
+
+    result.textContent = suggestions[maxType];
+  });
+</script>
+
+</body>
+</html>
