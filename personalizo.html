@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Personalizo</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Lora&display=swap" rel="stylesheet" />
+<style>
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: #F7F4F0;
+    padding: 2rem;
+    color: #1A1C29;
+    text-align: center;
+  }
+  h2 {
+    font-family: 'Lora', serif;
+    color: #007A82;
+    margin-bottom: 1.5rem;
+  }
+  #openModalBtn {
+    background: #BD4C65;
+    color: white;
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 999px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  #openModalBtn:hover {
+    background: #a53d56;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    overflow: hidden;
+  }
+
+  .modal-content {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 600px;
+    max-height: calc(100vh - 20px);
+    background: #fff;
+    border-radius: 16px 16px 0 0;
+    padding: 2rem 2rem 2rem 2rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.4s ease forwards;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -40px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  .close {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    font-size: 28px;
+    color: #999;
+    cursor: pointer;
+    z-index: 10;
+  }
+  .close:hover {
+    color: #BD4C65;
+  }
+
+  form {
+    text-align: left;
+    padding-bottom: 3rem;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  form p {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #1A1C29;
+  }
+
+  input[type='text'],
+  input[type='number'],
+  input[type='date'],
+  input[type='email'],
+  input[type='tel'],
+  textarea,
+  select {
+    width: 100%;
+    padding: 0.6rem;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 15px;
+    max-width: 100%;
+  }
+  textarea { resize: vertical; }
+
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 10px;
+  }
+  label input[type='checkbox'] {
+    margin-right: 8px;
+  }
+
+  button[type='submit'] {
+    background: #BD4C65;
+    color: white;
+    padding: 0.8rem 1.4rem;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 2.5rem; 
+    width: 100%;
+    flex-shrink: 0;
+    transition: background 0.3s ease;
+  }
+  button[type='submit']:hover {
+    background: #a53d56;
+  }
+
+  #shippingCost {
+    background: #007A82;
+    color: white;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    user-select: none;
+    display: inline-block;
+    margin-left: 8px;
+  }
+
+  .note {
+    font-size: 13px;
+    color: #555;
+    margin-top: 6px;
+    font-style: italic;
+    max-width: 600px;
+  }
+  .inline-note {
+    font-size: 13px;
+    color: #555;
+    font-style: italic;
+    display: inline-block;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  #confirmPopup {
+    display: none;
+    position: fixed;
+    z-index: 15000;
+    left: 0; top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+  }
+  #confirmPopup .popup-content {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 320px;
+    width: 90%;
+    margin: 20vh auto;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    text-align: center;
+    font-family: 'Lora', serif;
+    color: #007A82;
+    font-size: 18px;
+    position: relative;
+  }
+  #confirmPopup button {
+    margin-top: 1.5rem;
+    background: #BD4C65;
+    border: none;
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+  }
+  #confirmPopup button:hover {
+    background: #a53d56;
+  }
+  #confirmPopup .closePopup {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    font-size: 24px;
+    color: #999;
+    cursor: pointer;
+  }
+  #confirmPopup .closePopup:hover {
+    color: #BD4C65;
+  }
+
+  @media (max-width: 640px) {
+    .modal-content {
+      width: 95%;
+      padding: 1.5rem 1.5rem 2rem 1.5rem;
+      max-height: calc(90vh - 20px);
+      border-radius: 16px;
+    }
+    form p,
+    form input,
+    form select,
+    form textarea,
+    button[type='submit'] {
+      font-size: 14px;
+    }
+    .checkbox-group label {
+      font-size: 14px;
+    }
+    .close {
+      font-size: 24px;
+      top: 10px;
+      right: 16px;
+    }
+    #shippingCost {
+      font-size: 13px;
+      padding: 5px 10px;
+      margin-left: 5px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<h2>Dhuro një Kuti me Dashuri</h2>
+<button id="openModalBtn">Personalizo Gift Box-in</button>
+
+<div id="giftBoxModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-content">
+    <span class="close" aria-label="Mbyll modalin">&times;</span>
+    <form id="giftBoxForm">
+      <h2 id="modalTitle">Personalizo Gift Box-in</h2>
+
+      <p>Emri juaj:</p>
+      <input type="text" name="name" required autocomplete="name" />
+
+      <p>Zgjidh produktet që dëshiron të përfshihen:</p>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="products[]" value="Qirinj aromatik" /> Qirinj aromatik</label>
+        <label><input type="checkbox" name="products[]" value="Sapune artizanale" /> Sapune artizanale</label>
+        <label><input type="checkbox" name="products[]" value="Filxhan i personalizuar" /> Filxhan i personalizuar</label>
+        <label><input type="checkbox" name="products[]" value="Çokollatë artizanale" /> Çokollatë artizanale</label>
+        <label><input type="checkbox" name="products[]" value="Çaj i lirshëm" /> Çaj i lirshëm</label>
+        <label><input type="checkbox" name="products[]" value="Byzylyk artizanal" /> Byzylyk artizanal</label>
+        <label><input type="checkbox" name="products[]" value="Mbajtëse çelësash" /> Mbajtëse çelësash</label>
+        <label><input type="checkbox" name="products[]" value="Shenjues librash" /> Shenjues librash</label>
+        <label><input type="checkbox" name="products[]" value="Bimë dekorative" /> Bimë dekorative</label>
+        <label><input type="checkbox" name="products[]" value="Vaj esencial" /> Vaj esencial</label>
+        <label><input type="checkbox" id="customCheckbox" value="custom" /> Tjetër (shkruaje më poshtë)</label>
+      </div>
+
+      <input
+        type="text"
+        id="customProduct"
+        name="customProduct"
+        placeholder="Shkruaj produktin tjetër..."
+        style="display: none; margin-top: 10px"
+      />
+
+      <p>Buxheti i preferuar (Lekë): * <span id="shippingCost" style="display:none;">Posta: 200 Lekë* </span></p>
+      <input type="number" name="budget" id="budgetInput" min="500" required />
+      <div class="note">* Nëse çmimi është më pak se 500 Lekë, porosia nuk pranohet. Faleminderit për mirëkuptimin!*</div>
+
+      <p>Zgjidh stilin e ambalazhit:</p>
+      <select name="style" required>
+        <option value="">-- Zgjidh --</option>
+        <option value="minimalist">Minimalist</option>
+        <option value="festive">Festiv</option>
+        <option value="elegant">Elegant</option>
+        <option value="romantic">Romantik</option>
+        <option value="kid">Fëminor</option>
+
+      </select>
+
+      <p>Mesazh personal për në kuti/ Ndonjë kërkesë të veçantë për ne:</p>
+      <textarea name="message" rows="5" placeholder="Shkruaj urimin/ kërkesën këtu..."></textarea>
+
+      <p>Data e dorëzimit: *</p>
+      <input type="date" name="delivery" id="deliveryDate" required />
+      <div class="note">* Porosia do të jetë gati në 10 ditë.</div>
+
+      <p>Zgjidh mënyrën e kontaktit:</p>
+      <select id="contactMethod" required>
+        <option value="">-- Zgjidh --</option>
+        <option value="email">Email</option>
+        <option value="phone">Numër telefoni</option>
+      </select>
+
+      <div id="emailField" style="display: none;">
+        <p>Emaili:</p>
+        <input type="email" name="email" />
+      </div>
+
+      <div id="phoneField" style="display: none;">
+        <p>Numri i telefonit:</p>
+        <input type="tel" name="phone" />
+      </div>
+
+      <button type="submit">Dërgo Porosinë</button>
+    </form>
+  </div>
+</div>
+
+<div id="confirmPopup" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle" aria-describedby="confirmDesc">
+  <div class="popup-content">
+    <span class="closePopup" aria-label="Mbyll mesazhin">&times;</span>
+    <p id="confirmTitle">Porosia u dërgua me sukses!</p>
+    <button id="confirmOkBtn">OK</button>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('giftBoxModal');
+  const openBtn = document.getElementById('openModalBtn');
+  const closeBtn = document.querySelector('.close');
+  const customCheckbox = document.getElementById('customCheckbox');
+  const customProduct = document.getElementById('customProduct');
+
+  const contactMethod = document.getElementById('contactMethod');
+  const emailField = document.getElementById('emailField');
+  const phoneField = document.getElementById('phoneField');
+
+  const budgetInput = document.getElementById('budgetInput');
+  const shippingCost = document.getElementById('shippingCost');
+
+  const deliveryDate = document.getElementById('deliveryDate');
+
+  const confirmPopup = document.getElementById('confirmPopup');
+  const confirmClose = document.querySelector('#confirmPopup .closePopup');
+  const confirmOkBtn = document.getElementById('confirmOkBtn');
+
+  // Hap dhe mbyll modalin
+  openBtn.onclick = () => {
+    modal.style.display = 'block';
+    setMinDate();
+    shippingCost.style.display = 'none';
+  };
+  closeBtn.onclick = () => modal.style.display = 'none';
+  window.onclick = (e) => {
+    if (e.target == modal) modal.style.display = 'none';
+    if (e.target == confirmPopup) confirmPopup.style.display = 'none';
+  };
+
+  // Shfaq fushe produkt tjetër
+  customCheckbox.addEventListener('change', function () {
+    customProduct.style.display = this.checked ? 'block' : 'none';
+    if (!this.checked) customProduct.value = '';
+  });
+
+  // Zgjidhja e mënyrës së kontaktit
+  contactMethod.addEventListener('change', function () {
+    emailField.style.display = this.value === 'email' ? 'block' : 'none';
+    phoneField.style.display = this.value === 'phone' ? 'block' : 'none';
+  });
+
+  // Kontrollo budget-in dhe shfaq cmimin e postës në cep nëse është <1000
+  budgetInput.addEventListener('input', () => {
+    const value = parseFloat(budgetInput.value);
+    if (!isNaN(value) && value < 1000 && value > 0) {
+      shippingCost.style.display = 'inline-block';
+    } else {
+      shippingCost.style.display = 'none';
+    }
+  });
+
+  // Vendos min date sot për delivery (vetëm në të ardhmen, mund të zgjidhet sot)
+  function setMinDate() {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = ('0' + (today.getMonth() + 1)).slice(-2);
+    const dd = ('0' + today.getDate()).slice(-2);
+    deliveryDate.min = `${yyyy}-${mm}-${dd}`;
+    deliveryDate.value = `${yyyy}-${mm}-${dd}`;
+  }
+
+  // Submit me popup dhe mbyll modalin
+  const form = document.getElementById('giftBoxForm');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Validim shtesë për datën (nëse përdoruesi ndryshon diku tjetër)
+    if (deliveryDate.value < deliveryDate.min) {
+      alert('Zgjidh një datë të ardhshme për dorëzim.');
+      return;
+    }
+
+    // Mbyll modalin e formës
+    modal.style.display = 'none';
+
+    // Hap popup konfirmimi
+    confirmPopup.style.display = 'block';
+
+    // Ripastro formën dhe fusha shtesë
+    form.reset();
+    shippingCost.style.display = 'none';
+    customProduct.style.display = 'none';
+    emailField.style.display = 'none';
+    phoneField.style.display = 'none';
+  });
+
+  // Mbyll popup konfirmimi
+  confirmClose.onclick = () => (confirmPopup.style.display = 'none');
+  confirmOkBtn.onclick = () => (confirmPopup.style.display = 'none');
+</script>
+
+</body>
+</html>
