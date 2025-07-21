@@ -1,6 +1,4 @@
 
-/* aboutStyle.css */
-
 body {
   font-family: 'Robota';
   color: #1A1C29;
@@ -159,14 +157,28 @@ h5 {
   text-align: center;
 }
 
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #007A82; 
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+  background-color: #BD4C65; /* Hover color */
+  transform: translateY(-2px);
+}
 
 
-  header .navbar {
+header .navbar {
     background-color: #1A1C29 !important;
   }
- 
-
-
+  /* Navbar styling */
   .navbar {
     background-color: #F7F4F0;
     /* padding: 1rem 0; */
@@ -293,6 +305,7 @@ h5 {
   footer {
     background-color: #1A1C29;
     color: white;
+    border-top: 4px solid #007A82;
     font-size: 0.875rem;
     padding: 2.5rem 1rem;
   }
@@ -358,24 +371,6 @@ h5 {
 
 .mx-2 {
   margin: 0 0.5rem;
-}
-
-
-.btn {
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: #007A82; 
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.btn:hover {
-  background-color: #BD4C65; /* Hover color */
-  transform: translateY(-2px);
 }
 
 
